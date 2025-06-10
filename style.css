@@ -44,6 +44,8 @@ ul {
   border-left: 4px solid #1a73e8;
 }
 
+
+
 footer {
   background-color: #222;
   color: white;
@@ -65,4 +67,41 @@ footer {
 
 .download-btn:hover {
   background-color: #0d8ddb;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.like-btn.clicked {
+  background-color: #e91e63;
+}
+
+
+.project-img {
+  width: 250px;       /* Chiều ngang */
+  height: 250px;      /* Chiều dọc */
+  object-fit: cover;  /* Cắt ảnh vừa khung, không méo */
+  border-radius: 8px;
+  display: block;
+  margin: 10px auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }

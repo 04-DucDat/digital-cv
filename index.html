@@ -32,11 +32,16 @@
   <section class="projects">
     <h2>Dự án tiêu biểu</h2>
     <div class="project">
+
       <h3>Ứng dụng E-learning đơn giản</h3>
-      <p>Ứng dụng web đơn giản cho phép người dùng đăng ký khóa học và tải tài liệu. Sử dụng Java Swing.</p>
+      <p>Ứng dụng web cho phép người dùng đăng ký khóa học và tải tài liệu. Sử dụng Java Swing.</p>
+
       <h3>Ứng dụng Quản lý bán điện thoại</h3>
       <p>Ứng dụng Java Desktop dùng Swing + MySQL để quản lý sản phẩm, đơn hàng, khách hàng.</p>
+
+       <img src="elearning.jpg" alt="E-learning App" class="project-img">
     </div>
+
     <div class="project">
       <h3>Website Portfolio cá nhân</h3>
       <p>Trang web cá nhân xây dựng bằng HTML, CSS. </p>
@@ -59,23 +64,33 @@
   </section>
 
   <section class="contact">
+    <div class="buttons">
+  <a href="CV-TranDucDat.pdf" download class="btn">📥 Tải CV</a>
+  <a href="mailto:tranducdat1995dt@gmail.com" class="btn">📧 Gửi Email</a>
+  <a href="https://github.com/04-DucDat/digital-cv" target="_blank" class="btn">🌐 GitHub</a>
+  <button class="btn like-btn" onclick="likeCV()">❤️ Thích CV này</button>
+</div>
+
     <h2>Liên hệ</h2>
     <ul>
     <li>📞 0813647940</li>
     <li>📧 <a href="mailto:tranducdat1995dt@gmail.com">tranducdat1995dt@gmail.com</a></li>
     <li>🌐 <a href="https://github.com/04-DucDat/digital-cv.git">https://github.com/04-DucDat/digital-cv.git</a></li>
-    <li>🔗 <a href="https://www.facebook.com/tranducdat0401">Facebook</a></li>
-  </section>
-
-
-  <!-- Nút tải CV -->
-     <a href="CV-TranDucDat.pdf" download class="download-btn">📥 Tải CV xuống</a>
+    <li>🔗 <a href="https://www.facebook.com/tranducdat0401">https://www.facebook.com/tranducdat0401</a></li>
   </section>
 
 
   <footer>
     <p>&copy; 2025 Trần Đức Đạt. All rights reserved.</p>
   </footer>
+
+  <script>
+function likeCV() {
+  const btn = document.querySelector('.like-btn');
+  btn.classList.add('clicked');
+  btn.textContent = "❤️ Cảm ơn bạn đã thích!";
+}
+</script>
 
 </body>
 </html>
