@@ -1,10 +1,11 @@
 body {
-  font-size: 14px;
   font-family: 'Roboto', sans-serif;
+  font-size: 15px;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f5f7fa;
   color: #333;
+  line-height: 1.6;
 }
 
 header.hero {
@@ -16,58 +17,67 @@ header.hero {
 
 .avatar {
   width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border: 3px solid #1a73e8;
+  object-fit: cover;
 }
 
-section {
+.subtitle {
+  font-size: 1.2rem;
+  color: #00bcd4; /* màu xanh cyan hiện đại */
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+
+main section {
+  max-width: 900px;
+  margin: 0 auto;
   padding: 30px 20px;
-  max-width: 800px;
-  margin: auto;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
   color: #1a73e8;
   border-bottom: 2px solid #ddd;
   padding-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 ul {
-  list-style-type: disc;
+  list-style: disc;
   padding-left: 20px;
 }
 
 .project {
-  background: #eaeaea;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-left: 4px solid #1a73e8;
-}
-
-
-
-footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
+  margin-bottom: 20px;
   padding: 15px;
+  background-color: #f0f0f0;
+  border-left: 4px solid #1a73e8;
+  border-radius: 6px;
 }
 
-.download-btn {
-  display: inline-block;
-  margin-top: 15px;
-  background-color: #1da1f2;
-  color: white;
-  padding: 10px 16px;
+.project-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.download-btn:hover {
-  background-color: #0d8ddb;
-}
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -95,13 +105,10 @@ footer {
   background-color: #e91e63;
 }
 
-
-.project-img {
-  width: 250px;       /* Chiều ngang */
-  height: 250px;      /* Chiều dọc */
-  object-fit: cover;  /* Cắt ảnh vừa khung, không méo */
-  border-radius: 8px;
-  display: block;
-  margin: 10px auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
 }
