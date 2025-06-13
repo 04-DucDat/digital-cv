@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Trần Đức Đạt, a passionate web developer.">
     <title>Portfolio - Trần Đức Đạt</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-image: url("image/backround.jpg"); /* Thay đổi đường dẫn đến ảnh nền */
+            background-image: url("image/backround.jpg");
             background-size: cover;
             background-position: center;
             font-family: 'IBM Plex Sans', sans-serif;
@@ -23,9 +24,42 @@
         .profile-header {
             text-align: center;
         }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
         .profile-image img {
             width: 150px;
             border-radius: 50%;
+        }
+        .career-goals, .personal-projects, .certificates-activities, .hobbies, .language-skills, .contact-section {
+            text-align: center; /* Canh giữa tiêu đề */
+            margin-top: 20px;
+        }
+        .goal-item, .language-item {
+            display: inline-block; /* Để các mục nằm ngang */
+            margin: 0 20px; /* Khoảng cách giữa các mục */
+        }
+        .circular-progress {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .circular-progress svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg); /* Quay vòng tròn để bắt đầu từ trên cùng */
+        }
+        .circular-progress circle {
+            transition: stroke-dasharray 1s ease-in-out; /* Thêm hiệu ứng chuyển động */
         }
         .skills-list {
             display: flex;
@@ -42,16 +76,27 @@
             border-radius: 5px;
             margin-left: 10px;
             height: 20px;
+            overflow: hidden; /* Đảm bảo thanh tiến độ không ra ngoài */
         }
         .progress-bar {
             height: 100%;
             background-color: #4caf50;
             border-radius: 5px;
+            width: 0; /* Bắt đầu từ 0% */
+            animation: slide 2s forwards; /* Thêm hiệu ứng trượt */
+        }
+        @keyframes slide {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80%; /* Thay đổi theo từng kỹ năng */
+            }
         }
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: flex; /* Sử dụng flexbox để canh giữa */
+            justify-content: center; /* Canh giữa các ảnh */
+            gap: 20px; /* Khoảng cách giữa các ảnh */
         }
         .project-card {
             background-color: #222;
@@ -59,6 +104,7 @@
             overflow: hidden;
             position: relative;
             transition: transform 0.3s;
+            width: 300px; /* Đặt chiều rộng cố định cho các thẻ dự án */
         }
         .project-card:hover {
             transform: scale(1.05);
@@ -78,6 +124,7 @@
         }
         .hobbies-icons-inline {
             display: flex;
+            justify-content: center; /* Canh giữa các thẻ sở thích */
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -89,24 +136,9 @@
             align-items: center;
             width: 120px;
         }
-        .language-item {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-        .circular-progress {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-        .circular-progress svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
         .contact-buttons {
             display: flex;
+            justify-content: center; /* Canh giữa các nút liên hệ */
             gap: 10px;
         }
         .contact-button {
@@ -117,9 +149,15 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            transition: background-color 0.3s;
         }
-        .contact-button i {
-            margin-right: 5px;
+        .contact-button:hover {
+            background-color: #555;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
         }
     </style>
 </head>
@@ -132,7 +170,7 @@
                     <span>Quay lại trang chủ</span>
                 </a>
                 <div class="profile-image">
-                    <img src="image/avatar.jpg" alt="Profile Picture">
+                    <img src="image/avatar.jpg" alt="Hình ảnh đại diện của Trần Đức Đạt">
                 </div>
                 <div class="personal-info">
                     <h1>Trần Đức Đạt</h1>
@@ -141,19 +179,35 @@
                 </div>
             </header>
 
-            <section class="detail-info-section">
-                <h2>Thông Tin Chi Tiết</h2>
-                <p>Chuyên ngành: Mạng máy tính và Truyền thông dữ liệu</p>
-                <p>Thời gian học: 2023 - 2030</p>
-            </section>
-
             <section class="career-goals">
                 <h3>Mục Tiêu Nghề Nghiệp</h3>
-                <ul>
-                    <li>Front End Developer</li>
-                    <li>Full Stack Developer</li>
-                    <li>UI / UX Designer</li>
-                </ul>
+                <div class="goal-item">
+                    <div class="circular-progress" data-percent="80">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="20" stroke="#444" stroke-width="5" fill="transparent"/>
+                            <circle class="progress-circle" cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="0 100" />
+                        </svg>
+                    </div>
+                    <p>Front End Developer</p>
+                </div>
+                <div class="goal-item">
+                    <div class="circular-progress" data-percent="70">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="20" stroke="#444" stroke-width="5" fill="transparent"/>
+                            <circle class="progress-circle" cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="0 100" />
+                        </svg>
+                    </div>
+                    <p>Full Stack Developer</p>
+                </div>
+                <div class="goal-item">
+                    <div class="circular-progress" data-percent="60">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="20" stroke="#444" stroke-width="5" fill="transparent"/>
+                            <circle class="progress-circle" cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="0 100" />
+                        </svg>
+                    </div>
+                    <p>UI / UX Designer</p>
+                </div>
             </section>
 
             <section class="skills">
@@ -205,15 +259,11 @@
             </section>
 
             <section class="certificates-activities">
-                <h3>Chứng Chỉ Và Hoạt Động</h3>
+                <h3>Hoạt Động Tình Nguyện</h3>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <h4>Chứng Chỉ Tin Học</h4>
-                        <p>Năm: 2023</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>Hoạt Động Xuân Tình Nguyện</h4>
-                        <p>Năm: 2022</p>
+                        <h4>Hoạt Động: Xuân Tình Nguyện</h4>
+                        <img src="image/xuan_tinh_nguyen.jpg" alt="Hình ảnh hoạt động Xuân Tình Nguyện" style="width: 50%; border-radius: 10px;">
                     </div>
                 </div>
             </section>
@@ -243,24 +293,22 @@
             <section class="language-skills">
                 <h3>Ngôn Ngữ</h3>
                 <div class="language-item">
-                    <div class="circular-progress">
+                    <div class="circular-progress" data-percent="80">
                         <svg width="50" height="50">
                             <circle cx="25" cy="25" r="20" stroke="#444" stroke-width="5" fill="transparent"/>
-                            <circle cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="80 100" />
+                            <circle class="progress-circle" cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="0 100" />
                         </svg>
                     </div>
                     <p>Ngôn Ngữ Anh</p>
-                    <span class="lang-percentage">80%</span>
                 </div>
                 <div class="language-item">
-                    <div class="circular-progress">
+                    <div class="circular-progress" data-percent="30">
                         <svg width="50" height="50">
                             <circle cx="25" cy="25" r="20" stroke="#444" stroke-width="5" fill="transparent"/>
-                            <circle cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="30 100" />
+                            <circle class="progress-circle" cx="25" cy="25" r="20" stroke="#4caf50" stroke-width="5" fill="transparent" stroke-dasharray="0 100" />
                         </svg>
                     </div>
                     <p>Ngôn Ngữ Trung</p>
-                    <span class="lang-percentage">30%</span>
                 </div>
             </section>
 
@@ -281,6 +329,11 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 Trần Đức Đạt. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+     <script src="script.js"></script> <!-- Liên kết tệp JavaScript -->
+    
 </body>
 </html>
