@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f8ff; /* Màu nền trang nhẹ nhàng */
+    transition: background-color 0.5s ease; /* Hiệu ứng chuyển màu nền */
 }
 
 header {
@@ -15,7 +16,7 @@ header {
 
 /* Phần Banner */
 .banner {
-    background-image: url('./img/banner.jpg'); /* Thay đổi đường dẫn ảnh banner */
+    background-image: url('image/banner.jpg'); /* Thay đổi đường dẫn ảnh banner */
     height: 200px;
     background-size: cover;
     display: flex;
@@ -24,6 +25,17 @@ header {
     color: white;
     font-size: 24px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1s; /* Hiệu ứng xuất hiện cho banner */
+}
+
+/* Hiệu ứng fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Navbar */
@@ -34,15 +46,16 @@ header {
 }
 
 .navbar a {
-color: white;
-padding: 14px 20px;
-text-decoration: none;
-text-align: center;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển màu và phóng to */
 }
 
-        .navbar a:hover {
+.navbar a:hover {
     background-color: #007acc; /* Màu nền khi hover */
-    color: white;
+    transform: scale(1.1); /* Phóng to khi hover */
 }
 
 .back-home-btn {
@@ -51,6 +64,11 @@ text-align: center;
     left: 20px;
     color: white;
     text-decoration: none;
+    transition: color 0.3s; /* Hiệu ứng chuyển màu cho nút quay lại */
+}
+
+.back-home-btn:hover {
+    color: #ffcc00; /* Màu khi hover */
 }
 
 .main-container {
@@ -66,6 +84,11 @@ section {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Hiệu ứng chuyển động cho section */
+}
+
+section:hover {
+    transform: translateY(-5px); /* Nâng lên khi hover */
 }
 
 h2 {
@@ -80,6 +103,11 @@ h2 {
 .skill-item, .hobby-item {
     flex: 1 1 45%;
     margin: 10px;
+    transition: transform 0.3s; /* Hiệu ứng chuyển động cho kỹ năng và sở thích */
+}
+
+.skill-item:hover, .hobby-item:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
 }
 
 .progress-bar {
@@ -108,11 +136,11 @@ h2 {
     background: #ffffff; /* Màu nền trắng cho thẻ dự án */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển động cho thẻ dự án */
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Phóng to khi hover */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -120,6 +148,11 @@ h2 {
     width: 100%; /* Đặt chiều rộng ảnh là 100% */
     border-radius: 8px; /* Bo góc cho ảnh */
     margin-bottom: 10px; /* Khoảng cách giữa ảnh và mô tả */
+    transition: transform 0.3s; /* Hiệu ứng chuyển động cho ảnh */
+}
+
+.project-image:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
 }
 
 .timeline {
@@ -163,4 +196,9 @@ footer {
     padding: 10px;
     background-color: #007acc; /* Màu nền footer */
     color: white;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền footer */
+}
+
+footer:hover {
+    background-color: #005f99; /* Màu nền khi hover */
 }
