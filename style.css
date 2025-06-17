@@ -230,3 +230,19 @@ section.visible {
     opacity: 1; /* Hiện phần tử */
     transform: translateY(0); /* Trở về vị trí ban đầu */
 }
+
+/* Các quy tắc CSS khác của bạn ở đây */
+/* Hiệu ứng tuyết rơi */
+.snowflake {
+    position: absolute;
+    top: -10px; /* Bắt đầu từ trên cùng */
+    color: white; /* Màu của bông tuyết */
+    font-size: 24px; /* Kích thước bông tuyết */
+    pointer-events: none; /* Không cho phép tương tác với bông tuyết */
+    animation: fall linear infinite; /* Hiệu ứng rơi */
+}
+@keyframes fall {
+    to {
+        transform: translateY(100vh); /* Rơi xuống dưới cùng */
+    }
+}

@@ -47,3 +47,19 @@ sections.forEach(section => {
     observer.observe(section); // Theo dõi từng phần
 });
 
+// Hàm tạo bông tuyết
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.innerHTML = '❄'; // Biểu tượng bông tuyết
+    // Đặt vị trí ngẫu nhiên cho bông tuyết
+    snowflake.style.left = Math.random() * window.innerWidth + 'px';
+    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Thời gian rơi ngẫu nhiên
+    document.body.appendChild(snowflake);
+    // Xóa bông tuyết sau khi nó rơi xuống
+    snowflake.addEventListener('animationend', () => {
+        snowflake.remove();
+    });
+}
+// Tạo bông tuyết mỗi 300ms
+setInterval(createSnowflake, 300);
