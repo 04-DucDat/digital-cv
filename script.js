@@ -10,7 +10,40 @@ document.querySelectorAll('.navbar a').forEach(anchor => {
         });
     });
 });
+
 // Thông báo khi nhấp vào nút "Quay lại trang chủ"
 document.querySelector('.back-home-btn').addEventListener('click', function() {
     alert('Bạn đang quay lại trang chủ!');
 });
+
+// Thay đổi màu sắc của navbar khi cuộn trang
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) { // Nếu cuộn xuống hơn 50px
+        navbar.style.backgroundColor = '#003f66'; // Màu nền mới
+    } else {
+        navbar.style.backgroundColor = '#005f99'; // Màu nền ban đầu
+    }
+});
+
+// Hiệu ứng hiển thị cho các phần khi cuộn đến
+const sections = document.querySelectorAll('section');
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1 // Khi 10% phần tử xuất hiện trong viewport
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); // Thêm lớp 'visible' khi phần tử xuất hiện
+            observer.unobserve(entry.target); // Ngừng theo dõi phần tử
+        }
+    });
+}, options);
+
+sections.forEach(section => {
+    observer.observe(section); // Theo dõi từng phần
+});
+
